@@ -8,11 +8,9 @@ class Storehome extends EventEmitter{
 			{id:1,name:"jitendra patel",email:''}
 		]
 	}
-
 	getuserlist(){
 		return this.userlist;
 	}
-
 	createUserlist(name){
 		const id = Date.now();
 		//const email = "sdfdsf@gmail.com";

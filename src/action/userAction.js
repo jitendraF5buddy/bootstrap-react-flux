@@ -4,3 +4,6 @@ export function createUser(type,name){
 	Dispatcher.dispatch({type: type,name});
 }
 
+/*export function createUser(type,name){
+	Dispatcher.dispatch({type: type,name});
+}*/
