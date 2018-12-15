@@ -1,19 +1,41 @@
 import React, { Component } from 'react';
 import {login as l,logout,handleResponse} from './_service/user_service';
+import Authchecker from './store/Authchecker';
+import * as userAction from "./action/userAction";
+
+import {
+  BrowserRouter as Router,
+  Route,
+  Link,
+  Redirect
+} from "react-router-dom";
 
 class Login extends Component {
 
+  constructor(props){
+      super();
+      this.state = {
+        redirect : Authchecker.checkLoginAuth(),
+      }
+      this.login = this.login.bind(this);
+  }
 
   login = (e) => {
     debugger;
-   e.preventDefault();
-  let email = e.target.email.value;
-    let password = e.target.password.value;
-   l(email,password);
+    e.preventDefault();
+    const email = e.target.email.value;
+    const  password = e.target.password.value;
+    l(email,password);
+    Authchecker.checkLoginAuth('LOGIN','login');
+    this.setState({redirect:true}); 
   }
 
-
   render() {
+
+    if(this.state.redirect){
+      return (<Redirect to="/support" />);
+    }
+
     return (
       <div className="container">
         <div className="col-sm-12">
@@ -42,5 +64,4 @@ class Login extends Component {
     );
   }
 }
-
 export default Login;

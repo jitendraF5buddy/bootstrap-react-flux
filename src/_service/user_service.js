@@ -2,14 +2,22 @@
 function login(username, password) {
     debugger;
 
-    const requestOptions = {
-        method: "post",
-        headers : new Headers(),
-        body: JSON.stringify({ username, password })
+    const requestOptions =  {
+        method: "POST", // *GET, POST, PUT, DELETE, etc.
+        mode: "cors", // no-cors, cors, *same-origin
+        cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
+        credentials: "same-origin", // include, *same-origin, omit
+        headers: {    
+            "Content-Type": "application/x-www-form-urlencoded",
+        },
+        redirect: "follow", // manual, *follow, error
+        referrer: "no-referrer", // no-referrer, *client
+        body: JSON.stringify({username,password}) // body data type must match "Content-Type" header
     }
 
-    debugger;   
-    return fetch('http://api.pierre.fm/customerapi/login', requestOptions)
+    localStorage.setItem('usertoken', "4234324234133432");
+    return username;
+    /*return fetch('http://localhost/codei/api/auth/authlogin', requestOptions)
         .then(function(response){ 
             debugger;
              return response.json();   
@@ -21,7 +29,7 @@ function login(username, password) {
                 localStorage.setItem('user', JSON.stringify(user));
             }
     return user;
-    });
+    }); */
 }
 
 function logout() {
